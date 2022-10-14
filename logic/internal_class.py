@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 import re
 import os
 import time
-import multiprocessing
 import json
 
 # region variables
@@ -13,12 +12,13 @@ bot_url = f"https://api.telegram.org/bot{token}"
 params = {"chat_id": os.getenv("CHAT_ID"),
           "text": f'There seems to be appointments in the Ausländerbehörde. <a href="{auslander_path}">Click here to check!</a>'}
 pattern = r".*(Bitte versuchen Sie es am).*( Montag erneut).*"
+daemon_status_file = "static/daemon_status.json"
 # endregion
 
 
-def check_website(queue: multiprocessing.Queue):
+def check_website():
     while True:
-        with open("static/daemon_status.json", "r") as f:
+        with open(daemon_status_file, "r") as f:
             status = json.load(f)
         should_continue = status["on"] == "on"
         if should_continue:
