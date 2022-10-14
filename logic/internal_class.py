@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 import re
 import os
 import time
+import multiprocessing
+import json
 
 # region variables
 auslander_path = "https://auslaenderbehoerdeonline.hannover-stadt.de/index.cfm?CFID=1191255&CFTOKEN=ad7fa839fad70672-EEFB617A-A3C7-DC0D-6B61823C37AC16EC"
@@ -13,14 +15,12 @@ params = {"chat_id": os.getenv("CHAT_ID"),
 pattern = r".*(Bitte versuchen Sie es am).*( Montag erneut).*"
 # endregion
 
+
 def check_website(queue: multiprocessing.Queue):
     while True:
-        try:
-            should_continue = queue.get()
-        except Exception as e:
-            print(e)
-            should_continue = False
-
+        with open("static/daemon_status.json", "r") as f:
+            status = json.load(f)
+        should_continue = status["on"] == "on"
         if should_continue:
             # region Daemon
             # Getting the HTML from the page
@@ -30,7 +30,7 @@ def check_website(queue: multiprocessing.Queue):
             text = soup.find('p').get_text()
             matches = re.findall(pattern, text, re.IGNORECASE)
             if len(matches) == 0:
-                r = requests.get(bot_url + "/sendMessage", params=params)
+                requests.get(bot_url + "/sendMessage", params=params)
         time.sleep(60)
         # endregion
 
