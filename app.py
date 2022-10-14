@@ -10,8 +10,8 @@ def create_app():
     daemon_status_file = "static/daemon_status.json"
 
     # region Daemon declaration
-    process = Process(target=check_website)
-    process.start()
+    p = Process(target=check_website)
+    p.start()
     # endregion
 
     @app.route('/')
@@ -27,6 +27,6 @@ def create_app():
         # Change the status
         with open(daemon_status_file, "w") as f:
             json.dump({"on": not current_status}, f)
-        return f"<h1>The Daemon status has been changed to {current_status}</h1>"
+        return f"<h1>The Daemon status has been changed to {not current_status}</h1>"
 
     return app
