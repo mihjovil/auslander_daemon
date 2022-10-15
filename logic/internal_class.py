@@ -33,7 +33,7 @@ def check_website():
             soup = BeautifulSoup(response.content)
             text = soup.find('p').get_text()
             matches = re.findall(pattern, text, re.IGNORECASE)
-            if len(matches) != 0:
+            if len(matches) == 0:
                 requests.get(bot_url + "/sendMessage", params=params)
                 logging.info("found appointments")
         time.sleep(60)
