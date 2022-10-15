@@ -36,7 +36,7 @@ def check_website():
             if len(matches) == 0:
                 requests.get(bot_url + "/sendMessage", params=params)
                 logging.info("found appointments")
-        time.sleep(10)
+        time.sleep(60)
         # endregion
 
 
