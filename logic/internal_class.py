@@ -39,7 +39,9 @@ def check_website():
                                   f' . If you want to turn it off {app_url}/switch_status'
                 requests.get(bot_url + "/sendMessage", params=params)
                 logging.info("found appointments")
-        # TODO increase the counter
+        with open(daemon_status_file, "w") as f:
+            status["daemon_counter"] += 1
+            json.dump(status, f)
         time.sleep(60)
         # endregion
 
