@@ -11,7 +11,7 @@ auslander_path = "https://auslaenderbehoerdeonline.hannover-stadt.de/index.cfm?C
 token = os.getenv("TOKEN")
 bot_url = f"https://api.telegram.org/bot{token}"
 params = {"chat_id": os.getenv("CHAT_ID"),
-          "text": f'There seems to be appointments in the Ausländerbehörde. <a href="{auslander_path}">Click here to check!</a>'}
+          "text": f'There seems to be appointments in the Ausländerbehörde. {auslander_path}'}
 pattern = r".*(Bitte versuchen Sie es am).*( Montag erneut).*"
 daemon_status_file = "static/daemon_status.json"
 # endregion
@@ -34,8 +34,12 @@ def check_website():
             text = soup.find('p').get_text()
             matches = re.findall(pattern, text, re.IGNORECASE)
             if len(matches) == 0:
+                app_url = status["app_url"]
+                params["text"] += f'. If you wish to check the daemon counter {app_url}/check_counter' \
+                                  f' . If you want to turn it off {app_url}/switch_status'
                 requests.get(bot_url + "/sendMessage", params=params)
                 logging.info("found appointments")
+        # TODO increase the counter
         time.sleep(60)
         # endregion
 
