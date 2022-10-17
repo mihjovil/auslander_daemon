@@ -1,1 +1,5 @@
-{"on": true}
+{
+  "on": true,
+  "app_url": "https://auslaender-daemon.herokuapp.com",
+  "daemon_counter": 0
+}
