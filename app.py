@@ -29,7 +29,7 @@ def create_app():
             json.dump({"on": not current_status}, f)
         return f"<h1>The Daemon status has been changed to {not current_status}</h1>"
 
-    @app.route("check_counter", methods=["GET"])
+    @app.route("/check_counter", methods=["GET"])
     def show_daemon_counter():
         with open(daemon_status_file, "r") as f:
             status = json.load(f)
