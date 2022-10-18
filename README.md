@@ -2,9 +2,9 @@
 This repository has the code to check if the website of the Immigration office in Hannover has changed and has 
 appointments available. It will send a message to my Telegram if there is a change so that I can use the website and 
 get an appointment fast.
-1. [How to use?](how-to-use)
-2. [What is required?](what-is-required)
-3. [Future work](future-work)
+1. [How to use?](#how-to-use)
+2. [What is required?](#what-is-required)
+3. [Future work](#future-work)
 
 ## How to use?
 The repository contains a flask application with a daemon inside that will check the website every minute and if it
