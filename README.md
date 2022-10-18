@@ -24,3 +24,7 @@ This command should be executed in the root folder.
 
 ## What is required?
 In order to use this application, one needs to create an account in Telegram and a chat-bot in it.
+TODO
+
+## Future work
+TODO
