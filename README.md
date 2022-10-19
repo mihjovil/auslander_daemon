@@ -38,7 +38,10 @@ The steps are the following:
 5. Search for BotFather and send `/start`. This will provide instructions to create a new bot with `/newbot`
 6. Copy the access token from the response, this is necessary for all future communications
 
-In the environmental variables of this project you must specify the token and the ID.
+In the environmental variables of this project you must specify the token and the ID. There is an example file
+`.env.example` with the names of both. Either create as variables from the terminal before running the program,
+or create a `.env` file with these two variables and their values. This will allow the code to execute without error.
+Additionally, it will send messages to your bot and only your bot.
 
 ## Future work
 TODO
