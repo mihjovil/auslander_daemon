@@ -11,7 +11,7 @@ The repository contains a flask application with a daemon inside that will check
 detects that the website has available appointments it will send a message using Telegram to an existing chatbot. 
 The repository contains all the settings for a free Heroku deployment. However, it is my understanding that this free
 tier will finish soon, therefore, it might not be free anymore and/or even not work. On the other side the code can run
-locally too without any required changes and since it is not a consumption API the flask deveopment server will do
+locally too without any required changes and since it is not a consumption API, the flask development server will do
 just fine.
 
 The application is using the factory patter from flask, which is why instead if running the app like a python module, it
@@ -20,7 +20,8 @@ specific settings would be the following command:
 ```
 flask run
 ```
-This command should be executed in the root folder.
+This command should be executed in the root folder and should start the flask environment with the application. As
+above, this is not a high consumption API, which means that the flask default server will do the trick.
 
 ## What is required?
 In order to use this application, one needs to create an account in Telegram and a chat-bot in it.
