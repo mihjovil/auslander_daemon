@@ -24,8 +24,21 @@ This command should be executed in the root folder and should start the flask en
 above, this is not a high consumption API, which means that the flask default server will do the trick.
 
 ## What is required?
-In order to use this application, one needs to create an account in Telegram and a chat-bot in it.
-TODO
+In order to use this application, one needs to create an account in Telegram and a chat-bot in it. 
+[This post](https://medium.com/@robertbracco1/how-to-write-a-telegram-bot-to-send-messages-with-python-bcdf45d0a580)
+is a good example of the required steps to have a working bot in Telegram to communicate to. Since the application is
+in Python, and it is a web application, one of the easiest ways to communicate to a phone and alert it of the 
+availability of appointments is to use this chat communication to Telegram. 
+
+The steps are the following:
+1. Create a Telegram account or login to yours
+2. Go to Settings and create an ID
+3. Send a message to RawDataBot (that is a contact name one can find in the browser)
+4. Copy your ID from the response
+5. Search for BotFather and send `/start`. This will provide instructions to create a new bot with `/newbot`
+6. Copy the access token from the response, this is necessary for all future communications
+
+In the environmental variables of this project you must specify the token and the ID.
 
 ## Future work
 TODO
